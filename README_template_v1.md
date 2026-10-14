@@ -17,9 +17,48 @@ This investigation sheet helps you gather key technical information from the thr
 | Endpoint to get messages | `______________'/v1/messages/_________________` |
 | Endpoint to send message | `________________'/v1/messages/'_______________` |
 | Required headers | `__________''Authorization: Bearer (Token Here)'', 'Content-Type: application/json', 'Accept: application/json'_____________________` |
-| Sample full GET or POST request | `_______________________________` |
+| Sample full GET or POST request | `__request('GET',https://webexapis.com/v1/rooms/?= , headers=headers, data = payload)_____________________________` |
 
----
+---   {
+    "items": [
+        {
+            "id": "Y2lzY29zcGFyazovL3VybjpURUFNOmV1LWNlbnRyYWwtMV9rL1JPT00vMjdmZTZlZjAtYzdiNS0xMWYxLTk5MGItYzlkZDYxMGFjYjM1",
+            "title": "Webt",
+            "type": "group",
+            "lastActivity": "2026-10-14T09:53:49.919Z",
+            "creatorId": "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9hNTNjYmQ2OC05NzllLTQ0MTItOGU5My0yMjM1YTlmMjg0MDc",
+            "created": "2026-10-14T09:53:49.919Z",
+            "ownerId": "Y2lzY29zcGFyazovL3VzL09SR0FOSVpBVElPTi9jMThlMTNhZS01NTc1LTRiYzAtYWUwMS1lNDg5MDVmMTRmMTc",
+            "isPublic": false,
+            "isReadOnly": false,
+            "isLocked": false
+        },
+        {
+            "id": "Y2lzY29zcGFyazovL3VybjpURUFNOmV1LWNlbnRyYWwtMV9rL1JPT00vMWQ0MjJjNDAtYzdiNS0xMWYxLTk5MGItYzlkZDYxMGFjYjM1",
+            "title": "ISS",
+            "type": "group",
+            "lastActivity": "2026-10-14T09:53:31.908Z",
+            "creatorId": "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9hNTNjYmQ2OC05NzllLTQ0MTItOGU5My0yMjM1YTlmMjg0MDc",
+            "created": "2026-10-14T09:53:31.908Z",
+            "ownerId": "Y2lzY29zcGFyazovL3VzL09SR0FOSVpBVElPTi9jMThlMTNhZS01NTc1LTRiYzAtYWUwMS1lNDg5MDVmMTRmMTc",
+            "isPublic": false,
+            "isReadOnly": false,
+            "isLocked": false
+        },
+        {
+            "id": "Y2lzY29zcGFyazovL3VybjpURUFNOmV1LWNlbnRyYWwtMV9rL1JPT00vMTc5OTgwZTAtYzdiNS0xMWYxLTliODUtY2JjMWRkMjJiYmQ1",
+            "title": "Welcome space",
+            "type": "group",
+            "lastActivity": "2026-10-14T09:53:22.976Z",
+            "creatorId": "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9hNTNjYmQ2OC05NzllLTQ0MTItOGU5My0yMjM1YTlmMjg0MDc",
+            "created": "2026-10-14T09:53:22.414Z",
+            "ownerId": "Y2lzY29zcGFyazovL3VzL09SR0FOSVpBVElPTi9jMThlMTNhZS01NTc1LTRiYzAtYWUwMS1lNDg5MDVmMTRmMTc",
+            "isPublic": false,
+            "isReadOnly": false,
+            "isLocked": false
+        }
+    ]
+}
 
 ##  ISS Current Location API (2 marks)
 
