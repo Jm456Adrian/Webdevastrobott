@@ -64,8 +64,8 @@ This investigation sheet helps you gather key technical information from the thr
 
 | Criteria | Details |
 |---------|---------|
-| API Base URL | `_______________________________` |
-| Endpoint for current ISS location | `_______________________________` |
+| API Base URL | `_____________"http://api.open-notify.org"__________________` |
+| Endpoint for current ISS location | `"http://api.open-notify.org/iss-now.json` |
 | Sample response format (example JSON) |  
 ```
 
