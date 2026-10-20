@@ -68,7 +68,14 @@ This investigation sheet helps you gather key technical information from the thr
 | Endpoint for current ISS location | `"http://api.open-notify.org/iss-now.json` |
 | Sample response format (example JSON) |  
 ```
-
+{
+  "message": "success", 
+  "timestamp": UNIX_TIME_STAMP, 
+  "iss_position": {
+    "latitude": CURRENT_LATITUDE, 
+    "longitude": CURRENT_LONGITUDE
+  }
+}
 ```
 |
 
