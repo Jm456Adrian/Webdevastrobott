@@ -89,7 +89,7 @@ This investigation sheet helps you gather key technical information from the thr
 | API Base URL | `_______________"http://api.openweathermap.org"________________` |
 | Endpoint for geocoding | `_______________"/geo/1.0/direct"________________` |
 | Endpoint for reverse geocoding | `_______________"/geo/1.0/reverse"________________` |
-| Authentication method | `_______________________________` |
+| Authentication method | `____________"http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid={API key}"___________________` |
 | Required query parameters | `_______________________________` |
 | Sample request with latitude/longitude | `_______________________________` |
 | Sample JSON response (formatted example) |  
