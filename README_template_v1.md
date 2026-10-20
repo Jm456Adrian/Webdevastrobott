@@ -86,9 +86,9 @@ This investigation sheet helps you gather key technical information from the thr
 | Criteria | Details |
 |---------|---------|
 | Provider used (Choose one) | **LocationIQ / Mapbox/ OpenWeatherMap other -provide detail** |
-| API Base URL | `_______________________________` |
-| Endpoint for geocoding | `_______________________________` |
-| Endpoint for reverse geocoding | `_______________________________` |
+| API Base URL | `_______________"http://api.openweathermap.org"________________` |
+| Endpoint for geocoding | `_______________"/geo/1.0/direct"________________` |
+| Endpoint for reverse geocoding | `_______________"/geo/1.0/reverse"________________` |
 | Authentication method | `_______________________________` |
 | Required query parameters | `_______________________________` |
 | Sample request with latitude/longitude | `_______________________________` |
