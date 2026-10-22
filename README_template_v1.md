@@ -312,13 +312,20 @@ This investigation sheet helps you gather key technical information from the thr
 
 | Criteria | Details |
 |---------|---------|
-| Library used | `_______________________________` |
-| Function used to convert epoch | `_______________________________` |
+| Library used | `__________________datetime_____________` |
+| Function used to convert epoch | `___________datetime.fromtimestamp()____________________` |
 | Sample code to convert timestamp |  
-```  
+```
+from datetime import datetime
+
+epoch_time = 1613474400  # Replace with your epoch time
+
+dt_object = datetime.utcfromtimestamp(epoch_time)
+formatted_time = dt_object.strftime('%Y-%m-%d %H:%M:%S')
+print(formatted_time) 
 ```
 |
-| Output (human-readable time) | `_______________________________` |
+| Output (human-readable time) | `____________2021-02-16 11:20:00___________________` |
 
 ---
 
