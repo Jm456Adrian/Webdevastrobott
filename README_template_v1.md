@@ -333,14 +333,28 @@ print(formatted_time)
 
 | Criteria | Details |
 |---------|---------|
-| API Provider | '___api.nasa.gov______' |
-| API Base URL | `_______________________________` |
-| Endpoint | `_______________________________` |
+| API Provider | '___NASA APOD______' |
+| API Base URL | `_________api.nasa.gov______________________` |
+| Endpoint | `_____________/wp-json/wp-v2/apod-basic__________________` |
 | Authentication method | `______________Token API_________________` |
-| Required query parameters | `_______________________________` |
+| Required query parameters | `___________api_key (if not it uses DEMO KEY as default)____________________` |
 | Sample JSON response (formatted example) |  
 ```
-
+{
+"date": "2026-09-11",
+"post_id": 1308668,
+"title": "M83: The Southern Pinwheel",
+"permalink": "https://science.nasa.gov/image-article/apod-2026-september-11-m83-the-southern-pinwheel/",
+"media_type": "image",
+"explanation": "Detailed Explanation",
+"credit": "Aldo Zanetti",
+"copyright": "Aldo Zanetti",
+"alt": "A spiral galaxy is shown in front of a dark field of stars.",
+"url": "https://science.nasa.gov/image-article/apod-2026-september-11-m83-the-southern-pinwheel/",
+"hdurl": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/M83_Final2_1x.jpg?w=3828&h=3798&fit=clip&crop=faces%2Cfocalpoint",
+"basic_html": "HTML of the page",
+"basic_html_url": "https://science.nasa.gov/wp-json/wp/v2/apod-basic/260911/html"
+}
 ```
 |
 
