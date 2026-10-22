@@ -260,10 +260,10 @@ This investigation sheet helps you gather key technical information from the thr
 
 | Criteria | Details |
 |---------|---------|
-| API Provider (Choose one) | **OpenWeather, OpenWeatherMap (or other – provide details)** |
+| API Provider (Choose one) | OpenWeather |
 | API Base URL | `_______________________________` |
 | Endpoint for current weather | `_______________________________` |
-| Authentication method | `_______________________________` |
+| Authentication method | `_______________Token API________________` |
 | Required query parameters | `_______________________________` |
 | Sample JSON response (formatted example) |  
 ```
