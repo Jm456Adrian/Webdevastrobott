@@ -333,10 +333,10 @@ print(formatted_time)
 
 | Criteria | Details |
 |---------|---------|
-| API Provider | '_________' |
+| API Provider | '___api.nasa.gov______' |
 | API Base URL | `_______________________________` |
 | Endpoint | `_______________________________` |
-| Authentication method | `_______________________________` |
+| Authentication method | `______________Token API_________________` |
 | Required query parameters | `_______________________________` |
 | Sample JSON response (formatted example) |  
 ```
