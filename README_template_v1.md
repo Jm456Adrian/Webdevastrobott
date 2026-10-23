@@ -380,6 +380,28 @@ Include a **simple block diagram** to illustrate this interaction.
 
 ####  Security Considerations: (3 marks )
 - Consider but not limiting to secure handling of API keys and tokens, API rate limiting, and Input validation (e.g., handling user commands safely), include examples from code where necessary to illustrate.
+1. Secure Handling of API Keys and TokensRuntime User Input: Sensitive Webex tokens and OpenWeatherMap API keys are prompted securely at runtime via get_webex_token() and get_api_key() rather than being committed directly to public source control repositories.   Code Example:
+   def get_webex_token():
+   
+   choice = input("Use hard-coded Webex token? (y/n): ").lower()
+    if choice == "n":
+        token = input("Enter your Webex Access Token: ")
+        return f"Bearer {token}"
+
+
+3. API Rate Limiting & Loop Polling ControlControlled Polling Delay: To avoid exceeding API rate limits or triggering HTTP 429 (Too Many Requests) throttling on Webex servers, the main polling loop enforces a mandatory 5-second sleep interval between polls.   Code Example:
+   while True:
+    # Process message logic...
+    time.sleep(5)  # Enforces rate limiting compliance
+
+
+5. Input Validation & Exception HandlingCommand & Parameter Validation: User commands are stripped and validated to prevent execution errors. Commands like /weather verify parameter count before issuing network requests to prevent IndexError exceptions.   Network Exception Guardrails: External API requests are wrapped with HTTP status checks (response.status_code == 200) and try-except blocks to handle network timeouts or server failures safely without crashing the bot runtime.   Code Example:
+   parts = message_text.split(maxsplit=1)
+	if len(parts) < 2:
+    	send_message(token, room_id, "Usage: /weather <city>")
+	else:
+    	city = parts[1]
+    	send_message(token, room_id, get_weather(city, weather_key))
 
 ---
 
