@@ -371,9 +371,10 @@ In this section, evaluate how web technologies, architecture, and design pattern
 Explain how the client–server model applies to your AstroBot:
 
 - Identify the **client**      AstroBot Application (Python Script): Acts as an HTTP client that initiates requrests to external web APIs to retrieve data and publish messages. Webex Client App: Acts as the user interface client where the end-user inputs commands and views outputs.
-- Identify the **server(s)**     
+- Identify the **server(s)**  Webex REST API Server.  Open-Notify API Server. Open-Meteo API Server   
 - Describe how data flows between:
-  - User, AstroBot and APIs
+  - User, AstroBot and APIs.
+    User Request: The user types a command (e.g., /weather London or /iss) into the Webex app.   Webex Polling: AstroBot sends a GET request to the Webex API server to read the latest message.   API Query: AstroBot parses the command and sends an HTTP GET request to the relevant third-party API server (OpenWeatherMap, Open-Notify, or Open-Meteo).   Data Response: The third-party API server returns a JSON response containing the requested raw data.   Message Delivery: AstroBot formats the JSON data into a readable text string and sends a POST request to the Webex API server, which displays the response in the user's Webex chat room. 
 
 Include a **simple block diagram** to illustrate this interaction.
 
