@@ -412,7 +412,8 @@ Explain how REST APIs are used in your AstroBot:
 - Describe how HTTP methods (GET, POST) are used
   GET: Used to query data from remote servers without changing state. Used in requests.get() to retrieve rooms (/rooms), read latest messages (/messages), fetch weather metrics, and get ISS coordinates.   Pythonresponse = requests.get(url, headers=headers, params=params)
 POST: Used to submit data payloads to remote servers. Used in send_message() with requests.post() to publish formatted bot replies to Webex chat rooms.   Pythonresponse = requests.post(url, headers=headers, data=json.dumps(data))
-- Explain how your bot interacts with APIs (Webex, Weather, ISS, Geocoding)  
+- Explain how your bot interacts with APIs (Webex, Weather, ISS, Geocoding)
+Webex API: Monitors user messages in a specific room and posts command results back to the room.   OpenWeatherMap Direct Geocoding API: Converts city names from /weather <city> commands into exact latitude/longitude coordinates.   OpenWeatherMap Weather API: Takes coordinates to fetch current temperature, humidity, wind speed, and weather descriptions.   Open-Notify ISS API: Fetches the real-time orbital location of the Space Station.   OpenWeatherMap Reverse Geocoding API: Converts ISS raw coordinates into nearby country/city names. 
 - Describe how JSON responses are received and processed  
 
 Note: Relate your explanation directly to your code for higher grade. 
