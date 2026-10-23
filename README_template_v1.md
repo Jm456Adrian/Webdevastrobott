@@ -380,28 +380,43 @@ Include a **simple block diagram** to illustrate this interaction.
 
 ####  Security Considerations: (3 marks )
 - Consider but not limiting to secure handling of API keys and tokens, API rate limiting, and Input validation (e.g., handling user commands safely), include examples from code where necessary to illustrate.
-1. Secure Handling of API Keys and TokensRuntime User Input: Sensitive Webex tokens and OpenWeatherMap API keys are prompted securely at runtime via get_webex_token() and get_api_key() rather than being committed directly to public source control repositories.   Code Example:
-   def get_webex_token():
-   
-   choice = input("Use hard-coded Webex token? (y/n): ").lower()
+Markdown
+## RESTful API Usage in Your Application (3 marks)
+
+### 1. HTTP Methods Used
+AstroBot utilizes standard HTTP methods via Python's `requests` library to interact with REST endpoints:
+* **`GET` Requests:** Used to safely retrieve data without modifying server state.
+  * `requests.get("https://webexapis.com/v1/rooms", headers=headers)` fetches user Webex spaces.
+  * `requests.get("https://webexapis.com/v1/messages", params=params)` retrieves incoming room messages.
+  * `requests.get("https://api.openweathermap.org/data/2.5/weather", params=params)` fetches real-time weather metrics.
+  * `requests.get("http://api.open-notify.org/iss-now.json")` fetches ISS orbital coordinates.
+* **`POST` Requests:** Used to submit new data payloads to external servers.
+  * `requests.post("https://webexapis.com/v1/messages", headers=headers, data=json.dumps(data))` sends formatted responses back to the Webex chat room.
+
+### 2. Interaction with REST APIs
+AstroBot integrates four primary API services into a single unified bot loop:
+* **Cisco Webex Messaging API:** Handles user interaction through continuous polling (`GET /messages`) and message dispatching (`POST /messages`).
+* **OpenWeatherMap Direct Geocoding API:** Translates user city inputs (e.g. "Paris") into exact latitude/longitude coordinates (`GET /geo/1.0/direct`).
+* **OpenWeatherMap Weather API:** Uses coordinates to retrieve temperature, weather descriptions, humidity, and wind speed (`GET /data/2.5/weather`).
+* **Open-Notify ISS API:** Queries real-time latitude and longitude of the International Space Station (`GET /iss-now.json`), which is then cross-referenced with OpenWeatherMap's Reverse Geocoding API to resolve nearest land locations.
+
+### 3. Receiving and Processing JSON Responses
+When an API call succeeds, the returned JSON data stream is parsed into Python dictionaries using the `.json()` method:
+* **Extracting Nested Properties:** Data is accessed safely using keys (e.g., `weather["main"]["temp"]` for weather, or `data["iss_position"]["latitude"]` for the ISS).
+* **Formatting for Display:** Extracted numerical and text values are formatted into clean human-readable strings formatted with newlines (`\n`) before being sent to Webex via `send_message()`.
+
+
+## Security Considerations (2 marks & 3 marks)
+
+### 1. Secure Handling of API Keys and Tokens
+Sensitive Webex tokens and OpenWeatherMap API keys are prompted securely at runtime via `get_webex_token()` and `get_api_key()` rather than being hardcoded or committed to public source control repositories.
+
+```python
+def get_webex_token():
+    choice = input("Use hard-coded Webex token? (y/n): ").lower()
     if choice == "n":
         token = input("Enter your Webex Access Token: ")
         return f"Bearer {token}"
-
-
-3. API Rate Limiting & Loop Polling ControlControlled Polling Delay: To avoid exceeding API rate limits or triggering HTTP 429 (Too Many Requests) throttling on Webex servers, the main polling loop enforces a mandatory 5-second sleep interval between polls.   Code Example:
-   while True:
-    # Process message logic...
-    time.sleep(5)  # Enforces rate limiting compliance
-
-
-5. Input Validation & Exception HandlingCommand & Parameter Validation: User commands are stripped and validated to prevent execution errors. Commands like /weather verify parameter count before issuing network requests to prevent IndexError exceptions.   Network Exception Guardrails: External API requests are wrapped with HTTP status checks (response.status_code == 200) and try-except blocks to handle network timeouts or server failures safely without crashing the bot runtime.   Code Example:
-   parts = message_text.split(maxsplit=1)
-	if len(parts) < 2:
-    	send_message(token, room_id, "Usage: /weather <city>")
-	else:
-    	city = parts[1]
-    	send_message(token, room_id, get_weather(city, weather_key))
 
 ---
 
