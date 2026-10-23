@@ -409,7 +409,9 @@ Include a **simple block diagram** to illustrate this interaction.
 
 Explain how REST APIs are used in your AstroBot: 
 
-- Describe how HTTP methods (GET, POST) are used  
+- Describe how HTTP methods (GET, POST) are used
+  GET: Used to query data from remote servers without changing state. Used in requests.get() to retrieve rooms (/rooms), read latest messages (/messages), fetch weather metrics, and get ISS coordinates.   Pythonresponse = requests.get(url, headers=headers, params=params)
+POST: Used to submit data payloads to remote servers. Used in send_message() with requests.post() to publish formatted bot replies to Webex chat rooms.   Pythonresponse = requests.post(url, headers=headers, data=json.dumps(data))
 - Explain how your bot interacts with APIs (Webex, Weather, ISS, Geocoding)  
 - Describe how JSON responses are received and processed  
 
