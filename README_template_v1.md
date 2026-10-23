@@ -438,9 +438,9 @@ Provide a short example based on your implementation
 
 | Component   | Description and Example (Relate to your Bot) |
 |------------|----------------------------------|
-| **Model**  |  |Description: Manages raw data fetching, processing, and application business logic.   Example: Data functions like get_weather(), get_iss_location(), and get_astronomy_info() perform external HTTP requests, parse raw JSON data, and manage logical data structures.
-| **View**   |  |Description: Responsible for formatting output strings and displaying the user interface.   Example: The Cisco Webex Chat Room Interface displays incoming responses to the user. Output string formatting inside send_message() converts dictionary fields into formatted text strings for rendering in chat.   
-| **Controller** |  | Description: Handles application workflow, polls for user input, parses commands, and routes operations between Model and View.   Example: The main() function serves as the central polling loop (while True). It fetches messages via get_latest_message(), parses commands like /weather or /iss, calls corresponding Model functions, and routes generated output strings back to the View via send_message().
+| **Model**  |**Description:** Manages raw data fetching, processing, and application business logic.<br>**Example:** Data functions like `get_weather()`, `get_iss_location()`, and `get_astronomy_info()` perform external HTTP requests, parse raw JSON data, and manage logical data structures.  |
+| **View**   |  | 
+| **Controller** |  | 
 
 ---
 
