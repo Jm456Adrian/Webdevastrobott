@@ -423,7 +423,12 @@ Note: Relate your explanation directly to your code for higher grade.
 
 #### Security Considerations: (2 marks)
 - Check response status codes, Handling invalid or unexpected API responses, Avoiding excessive API calls
-
+Status Code Checks: All API calls evaluate if response.status_code != 200: before attempting to parse JSON, returning error notices if an external API fails.   Pythonif response.status_code != 200:
+    return "Error fetching weather data from OpenWeatherMap."
+Handling Unexpected API Responses: try-except blocks wrap API calls to catch connectivity exceptions, and .get() statements safely query optional JSON fields without throwing key errors.   Pythonplace = f"{location.get('name', 'Unknown')}, {location.get('country', '')}"
+Avoiding Excessive API Calls: A mandatory 5-second sleep timer (time.sleep(5)) is included inside the continuous polling loop to stay within API rate limit rules and prevent HTTP 429 throttling.   Pythonwhile True:
+    # Polling and message logic...
+    time.sleep(5)
 ---
 
 ###  MVC Design Pattern in AstroBot (3 Marks)
