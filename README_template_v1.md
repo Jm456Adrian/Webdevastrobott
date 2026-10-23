@@ -454,6 +454,21 @@ Reflect on your AstroBot (400 words):
 - What security risks did you identify and how were they handled?  
 - How could your solution be improved in the future?  
 
+#### Meeting the Astronomy Club’s Needs
+AstroBot effectively supports the Astronomy Club by serving as an automated, central hub for stargazing and observation planning directly inside Cisco Webex. Members can query real-time ambient weather conditions (`/weather`), track space assets like the International Space Station (`/iss`), and retrieve exact solar schedule windows (`/apod`) without leaving the chat space. Providing integrated access to sunrise, sunset, and calculated daylight duration through the Open-Meteo extension directly aids club administrators in scheduling evening telescope observation sessions.
+
+#### Design Decisions That Worked Well
+Structuring the codebase into dedicated modular helper functions (`get_weather()`, `get_iss_location()`, `get_astronomy_info()`) decoupled data fetching from communication logic. This modular design made adding the stargazing extension straightforward without risking regression errors in the core Webex polling loop (`main()`). Additionally, using a lightweight continuous HTTP polling mechanism allowed real-time command processing without needing external webhook tunneling infrastructure or public IP exposure.
+
+#### API Integration Challenges
+A primary challenge during development was managing API key authentication failures and handling dynamic location resolution. Initially, querying the NASA APOD endpoint resulted in HTTP 500 server errors and rate-limiting issues when utilizing standard demo keys. This was resolved by implementing graceful fallback handling and transitioning to the keyless Open-Meteo Astronomy API. Another challenge involved converting raw ISS latitude and longitude floating-point values into human-readable locations, which required implementing reverse geocoding requests via `reverse_geocode()` to resolve oceanic versus land coordinates safely.
+
+#### Security Risks and Mitigation
+Hardcoding API tokens into source files presents a significant security risk when committing to public Git repositories. To eliminate this vulnerability, the system prompts for access tokens dynamically at runtime using `get_webex_token()` and `get_api_key()`. Furthermore, continuous API polling introduces rate-limiting risks (HTTP 429 errors). Enforcing a mandatory `time.sleep(5)` delay between iterations ensures strict compliance with API vendor thresholds. Finally, all HTTP requests validate `response.status_code == 200` prior to processing payloads, preventing bad API responses from crashing the bot runtime.
+
+#### Future Improvements
+Future enhancements could replace short-polling with Webex Webhooks via a micro-framework (such as Flask or FastAPI) to eliminate latency and reduce overhead. Additionally, integrating cloud cover metrics from Open-Meteo would provide club members with real-time stargazing visibility scores for planned observation nights.
+
 ---
 
  **Tip:** Link your answers directly to your code and examples for higher marks.
