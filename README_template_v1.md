@@ -439,7 +439,7 @@ Provide a short example based on your implementation
 | Component   | Description and Example (Relate to your Bot) |
 |------------|----------------------------------|
 | **Model**  |**Description:** Manages raw data fetching, processing, and application business logic.<br>**Example:** Data functions like `get_weather()`, `get_iss_location()`, and `get_astronomy_info()` perform external HTTP requests, parse raw JSON data, and manage logical data structures.  |
-| **View**   |  | 
+| **View**   | **Description:** Responsible for formatting output strings and displaying the user interface.<br>**Example:** The Cisco Webex Chat Room Interface displays incoming responses to the user. Output string formatting inside `send_message()` converts dictionary fields into formatted text strings for rendering in chat. | 
 | **Controller** |  | 
 
 ---
