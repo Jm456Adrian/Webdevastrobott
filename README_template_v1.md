@@ -370,8 +370,8 @@ In this section, evaluate how web technologies, architecture, and design pattern
 
 Explain how the client–server model applies to your AstroBot:
 
-- Identify the **client** 
-- Identify the **server(s)** 
+- Identify the **client**      AstroBot Application (Python Script): Acts as an HTTP client that initiates requrests to external web APIs to retrieve data and publish messages. Webex Client App: Acts as the user interface client where the end-user inputs commands and views outputs.
+- Identify the **server(s)**     
 - Describe how data flows between:
   - User, AstroBot and APIs
 
